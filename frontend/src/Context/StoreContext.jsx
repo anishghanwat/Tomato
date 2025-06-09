@@ -4,8 +4,7 @@ import axios from "axios";
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
-
-    const url = "http://localhost:4000"
+    const url = "https://tomato-0ya9.onrender.com"
     const [food_list, setFoodList] = useState([]);
     const [cartItems, setCartItems] = useState({});
     const [token, setToken] = useState("")
@@ -35,14 +34,14 @@ const StoreContextProvider = (props) => {
         let totalAmount = 0;
         for (const item in cartItems) {
             try {
-              if (cartItems[item] > 0) {
-                let itemInfo = food_list.find((product) => product._id === item);
-                totalAmount += itemInfo.price * cartItems[item];
-            }  
+                if (cartItems[item] > 0) {
+                    let itemInfo = food_list.find((product) => product._id === item);
+                    totalAmount += itemInfo.price * cartItems[item];
+                }
             } catch (error) {
-                
+
             }
-            
+
         }
         return totalAmount;
     }
